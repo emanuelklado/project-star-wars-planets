@@ -2,17 +2,38 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function Table() {
-  const { planets, planetsFiltredByName } = useContext(PlanetsContext);
+  const { planets, planetsFiltredByName, activeFilters } = useContext(PlanetsContext);
+
+  // função mostrada na monitoria do bradock para tratar as condições dos selected.
+  const dataSelected = (line) => {
+    const bools = [];
+    console.log(line);
+    activeFilters.forEach((filter) => {
+      switch (filter.comparison) {
+      case 'maior que':
+        bools.push(Number(line[filter.column]) > Number(filter.value));
+        break;
+      case 'menor que':
+        bools.push(Number(line[filter.column]) < Number(filter.value));
+        break;
+      case 'igual a':
+        bools.push(Number(line[filter.column]) === Number(filter.value));
+        break;
+      default:
+        return true;
+      }
+    });
+    // retornando cada resultado das comparações.
+    return bools.every((el) => el);
+  };
 
   const getPlanetsFiltred = () => {
     const { filterByName: { name } } = planetsFiltredByName;
-    if (name) {
-      return planets.filter((item) => item.name.includes(name));
-    }
-    return planets;
+
+    return planets.filter((item) => item.name.includes(name)).filter(dataSelected);
   };
 
-  console.log(planetsFiltredByName);
+  console.log(dataSelected(planets));
   return (
     <table>
       <thead>

@@ -8,6 +8,8 @@ function PlanetsProvider({ children }) {
   const [planetsFiltredByName, setPlanetsFiltredByName] = useState({ filterByName: {
     name: '',
   } });
+    // ARRAY DE FILTROS (MENTORIA BRADOCK)
+  const [activeFilters, setActiveFilters] = useState([]);
 
   // setando o estado com o conteudo que foi digitado
   const handleChange = (name) => {
@@ -31,6 +33,8 @@ function PlanetsProvider({ children }) {
     planets,
     handleChange,
     planetsFiltredByName,
+    activeFilters,
+    setActiveFilters,
   };
 
   return (
