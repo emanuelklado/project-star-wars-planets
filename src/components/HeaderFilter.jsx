@@ -32,7 +32,7 @@ function HeaderFilter() {
       return (<option key={ index } value={ item }>{item}</option>);
     }
   };
-
+  // console.log(activeFilters);
   return (
     <>
       <section>
@@ -82,15 +82,53 @@ function HeaderFilter() {
           onClick={ () => {
             setActiveFilters([...activeFilters, selected]);
             setSelected({
-              column: '',
-              comparison: '',
-              value: '',
+              column: 'population',
+              comparison: 'maior que',
+              value: '0',
             });
           } }
         >
           Filtrar
 
         </button>
+        { activeFilters.map((filter, index) => (
+          <div
+            data-testid="filter"
+            className="filter-container"
+            key={ index }
+          >
+            <button
+              type="button"
+              className="limpar"
+              onClick={ () => {
+                const newFilters = [...activeFilters];
+                newFilters.splice(index, 1);
+                setActiveFilters(newFilters);
+              } }
+            >
+              <i>X</i>
+              {/* {`deletar filtro ${filter.column}`} */}
+            </button>
+            {`${filter.column} ${filter.comparison} ${filter.value}`}
+          </div>
+        ))}
+        { // solução do mentoria do bradock para criar botao filtro e remove-lo.
+        }
+        { activeFilters.length > 0
+          ? (
+            <button
+              type="button"
+              data-testid="button-remove-filters"
+              onClick={ () => {
+                setActiveFilters([]);
+              } }
+            >
+              LIMPAR FILTROS
+              {' '}
+
+            </button>
+          )
+          : (null) }
       </form>
     </>
   );

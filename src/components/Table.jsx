@@ -17,7 +17,7 @@ function Table() {
         bools.push(Number(line[filter.column]) < Number(filter.value));
         break;
       case 'igual a':
-        bools.push(line[filter.column] === filter.value.toUpperCase());
+        bools.push(Number(line[filter.column]) === Number(filter.value.toUpperCase()));
         break;
       default:
         return true;
