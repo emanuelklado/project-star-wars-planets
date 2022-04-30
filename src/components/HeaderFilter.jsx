@@ -1,6 +1,15 @@
 import React, { useContext, useState } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
+// array de opções
+const optionsToRender = [
+  'population',
+  'orbital_period',
+  'diameter',
+  'rotation_period',
+  'surface_water',
+];
+
 function HeaderFilter() {
   // ESTADO DOS INPUTS CONFORME MENTORIA DO BRADOCK
   const [selected, setSelected] = useState({
@@ -11,6 +20,18 @@ function HeaderFilter() {
 
   // contexto
   const { handleChange, activeFilters, setActiveFilters } = useContext(PlanetsContext);
+
+  // função para criar os options de acordo com validação se está em uso ou nao.
+
+  const columnsAfterFilter = activeFilters.map((filter) => filter.column);
+
+  const renderOptions = (item, index) => {
+    const validation = columnsAfterFilter.some((filter) => filter === item);
+    // console.log(validation);
+    if (!validation) {
+      return (<option key={ index } value={ item }>{item}</option>);
+    }
+  };
 
   return (
     <>
@@ -32,12 +53,14 @@ function HeaderFilter() {
           value={ selected.column }
           onChange={ (e) => setSelected({ ...selected, column: e.target.value }) }
         >
-          <option value="population">population</option>
+          { optionsToRender.map((item, index) => (renderOptions(item, index))) }
+        </select>
+        {/* <option value="population">population</option>
           <option value="orbital_period">orbital_period</option>
           <option value="diameter">diameter</option>
           <option value="rotation_period">rotation_period</option>
           <option value="surface_water">surface_water</option>
-        </select>
+        </select> */}
         <select
           data-testid="comparison-filter"
           value={ selected.comparison }

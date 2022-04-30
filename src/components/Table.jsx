@@ -7,7 +7,7 @@ function Table() {
   // função mostrada na monitoria do bradock para tratar as condições dos selected.
   const dataSelected = (line) => {
     const bools = [];
-    console.log(line);
+    // console.log(line);
     activeFilters.forEach((filter) => {
       switch (filter.comparison) {
       case 'maior que':
@@ -17,7 +17,7 @@ function Table() {
         bools.push(Number(line[filter.column]) < Number(filter.value));
         break;
       case 'igual a':
-        bools.push(Number(line[filter.column]) === Number(filter.value));
+        bools.push(line[filter.column] === filter.value.toUpperCase());
         break;
       default:
         return true;
@@ -33,7 +33,7 @@ function Table() {
     return planets.filter((item) => item.name.includes(name)).filter(dataSelected);
   };
 
-  console.log(dataSelected(planets));
+  // console.log(dataSelected(planets));
   return (
     <table>
       <thead>
