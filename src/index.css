@@ -5,9 +5,139 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+}
+h1{
+  color: rgb(124, 121, 121);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container-header {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid #ccc; */
+  /* padding: 15px; */
+  
+}
+
+.container-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container-input-filter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* border: 1px solid blue; */
+  width: 50%;
+}
+.logo-container {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid green; */
+}
+
+.logo {
+  max-width: 85%;
+}
+
+.tabela {
+  height: 100vh;
+  /* border: 1px solid red; */
+  /* max-width: 1080px; */
+}
+
+
+.container-input-filter input,select {
+  width: 200px;
+  background-color: transparent;
+  color: red;
+  border-radius: 50px;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-style: dotted;
+  border-width: 2px;
+  -webkit-appearance:none;
+   -moz-appearance:none;
+   -ms-appearance:none;
+   appearance:none;
+   outline:0;
+   box-shadow:none;
+}
+
+.container-input-filter input:hover,select:hover {
+  transition: 600ms;
+  border-color: red;
+  border-style: solid;}
+
+  .btn-limpar {
+    background-color: transparent;
+    color: red;
+    border-style: none;
+    /* width: 12%; */
+    font-size: 25px;
+  }
+
+  .btn-limpar:hover {
+    color: #444;
+  }
+
+  .logo-topo {
+    /* border: 1px solid blue; */
+    background-color: black;
+    border-radius: 50%;
+    position: fixed;
+    right: 23px;
+    bottom: 42px;
+    height: 69px;
+    width: 69px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-topo:hover{
+    cursor: pointer;
+    transition: 600ms;
+    background-color: white;
+  }
+  .icon-topo {
+    color: red;
+    font-size: 75px;
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    cursor: pointer;
+  }
+  .texto-to-top {
+    color: white;
+    font-size: 20px;
+    position: fixed;
+    right: 26px;  
+    bottom: 1px;
+    cursor: pointer;
+  }
+
+  .icon-topo:hover {
+    color: red;
+  }
+
+  .footer {
+    height: 120px;
+    width: 100%;
+  }

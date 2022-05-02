@@ -35,7 +35,10 @@ function Table() {
 
   // console.log(dataSelected(planets));
   return (
-    <table>
+    <table
+      className="table table-dark table-striped table-hover tabela"
+      id="tabela"
+    >
       <thead>
         <tr>
           <th>Name</th>
